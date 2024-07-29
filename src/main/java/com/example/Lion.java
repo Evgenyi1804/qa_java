@@ -7,19 +7,18 @@ public class Lion {
     boolean hasMane;
     Feline feline;
 
-    public Lion(String sex) throws Exception {
-        this(sex, new Feline());
-    }
 
-    public Lion(String sex, Feline feline) throws Exception {
+
+    public Lion(String sex, Feline feline) throws IllegalArgumentException {
+        this.feline = feline;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
             hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
+            throw new IllegalArgumentException("Используйте допустимые значения пола животного - самец или самка");
         }
-        this.feline = feline;
+
     }
 
     public int getKittens() {

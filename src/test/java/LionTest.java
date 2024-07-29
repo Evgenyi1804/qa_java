@@ -3,20 +3,24 @@ import com.example.Lion;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Spy;
+import org.mockito.Mock;
 import org.junit.Assert;
 import java.util.List;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
-    @Spy
+    @Mock
     Feline feline;
     @Test
     public void lionFoodIsMeatTest() throws Exception {
         Lion lion = new Lion("Самец",  feline);
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыбы");
+        when(feline.getFood("Хищник")).thenReturn(expectedResult);
         assertEquals(expectedResult, lion.getFood());
+
     }
     @Test
     public void incorrectLionSexTest() throws Exception   {
@@ -40,6 +44,8 @@ public class LionTest {
     public void getKittensTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
         int expectedResult = 1;
+        when(feline.getKittens()).thenReturn(1);
+
         assertEquals(expectedResult, lion.getKittens());
     }
 }
