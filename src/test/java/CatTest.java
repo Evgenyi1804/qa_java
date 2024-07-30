@@ -1,0 +1,30 @@
+import org.junit.runner.RunWith;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import com.example.Cat;
+import com.example.Feline;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
+
+@RunWith(MockitoJUnitRunner.class)
+public class CatTest {
+    @Mock
+    private Feline feline;
+
+    @Test
+    public void catMeowTest() {
+        Cat cat = new Cat(feline);
+        String expectedResult = "Мяу";
+        assertEquals(expectedResult, cat.getSound());
+    }
+
+    @Test
+    public void catEatMeatTest() throws Exception {
+        Cat cat = new Cat(feline);
+        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыбы"));
+        List<String> actualResult = cat.getFood();
+        assertEquals(feline.eatMeat(), actualResult);
+    }
+}
