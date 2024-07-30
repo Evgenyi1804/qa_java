@@ -9,12 +9,12 @@ public class FelineTest {
     @Test
     public void felineFamilyTest() {
         String expectedResult = "Кошачьи";
-        assertEquals(feline.getFamily(), expectedResult);
+        assertEquals(expectedResult, feline.getFamily());
     }
 
     @Test
     public void felineFoodIsMeatTest() throws Exception {
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыбы");
-        assertEquals(feline.eatMeat(), expectedResult);
+        assertEquals(expectedResult, feline.eatMeat());
     }
 }
